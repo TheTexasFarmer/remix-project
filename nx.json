@@ -105,7 +105,10 @@
     "remix-ui-checkbox": {
       "tags": []
     },
-    "remix-ui-settings": {
+    "remix-ui-solidity-compiler": {
+      "tags": []
+    },
+    "remix-ui-publish-to-storage": {
       "tags": []
     }
   }
