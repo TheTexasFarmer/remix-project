@@ -250,6 +250,9 @@ export class VerticalIcons extends Plugin {
     const home = yo`
       <div
         class="${css.homeIcon}"
+        data-intro="Click here to launch our Home tab with all neccessary links and tips."
+        data-step="2"
+        data-title="kuku"
         onclick="${async () => {
           await this.appManager.activatePlugin('home')
           this.call('tabs', 'focus', 'home')
@@ -270,8 +273,8 @@ export class VerticalIcons extends Plugin {
     this.iconKind.settings = yo`<div id='settingsIcons' data-id="verticalIconsSettingsIcons"></div>`
 
     this.view = yo`
-      <div class="h-100" data-title="Welcome!" data-intro="Hello World!">
-        <div class=${css.icons} data-intro="Intro.js can highlight on elements">
+      <div class="h-100" data-step="1"  data-intro="Hello World!">
+        <div class=${css.icons}>
           ${home}
           ${this.iconKind.fileexplorer}
           ${this.iconKind.compiler}
