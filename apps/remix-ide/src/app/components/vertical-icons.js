@@ -74,7 +74,9 @@ export class VerticalIcons extends Plugin {
         plugin="${name}"
         title="${title}"
         oncontextmenu="${(e) => this.itemContextMenu(e, name, documentation)}"
-        data-id="verticalIconsKind${name}">
+        data-id="verticalIconsKind${name}"
+        id="verticalIconsKind${name}"
+      >
         <img class="image" src="${icon}" alt="${name}" />
       </div>`
     this.iconKind[kind || 'none'].appendChild(this.icons[name])
@@ -250,15 +252,13 @@ export class VerticalIcons extends Plugin {
     const home = yo`
       <div
         class="${css.homeIcon}"
-        data-intro="Click here to launch our Home tab with all neccessary links and tips."
-        data-step="2"
-        data-title="kuku"
         onclick="${async () => {
           await this.appManager.activatePlugin('home')
           this.call('tabs', 'focus', 'home')
         }}"
         plugin="home" title="Home"
         data-id="verticalIconsHomeIcon"
+        id="verticalIconsHomeIcon"
       >
         ${basicLogo()}
       </div>
@@ -273,7 +273,7 @@ export class VerticalIcons extends Plugin {
     this.iconKind.settings = yo`<div id='settingsIcons' data-id="verticalIconsSettingsIcons"></div>`
 
     this.view = yo`
-      <div class="h-100" data-step="1"  data-intro="Hello World!">
+      <div class="h-100">
         <div class=${css.icons}>
           ${home}
           ${this.iconKind.fileexplorer}

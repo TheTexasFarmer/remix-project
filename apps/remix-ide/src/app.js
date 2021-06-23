@@ -115,7 +115,11 @@ const css = csjs`
     fill: var(--secondary);
   }
   .centered svg polygon {
-    fill: var(--secondary);
+    fill              : var(--secondary);
+  }
+  .onboarding {
+    color             : var(--text-info);
+    background-color  : var(--info)
   }
   .matomoBtn {
     width              : 100px;
@@ -129,11 +133,11 @@ class App {
     self._components = {}
     self._view = {}
     self._view.splashScreen = yo`
-    <div class=${css.centered}>
-      ${basicLogo()}
-      <div class="info-secondary" style="text-align:center">
-        REMIX IDE
-      </div>
+      <div class=${css.centered}>
+        ${basicLogo()}
+        <div class="info-secondary" style="text-align:center">
+          REMIX IDE
+        </div>
       </div>
     `
     document.body.appendChild(self._view.splashScreen)
@@ -502,9 +506,35 @@ Please make a backup of your contracts and start using http://remix.ethereum.org
 
   if (params.embed) framingService.embed()
   //if (!params) {
-    if (!localStorage.getItem('hadTour_initial')) {
-      introJs().start()
-      localStorage.setItem('hadTour_initial', true)
-    }
+  //  if (!localStorage.getItem('hadTour_initial')) {
+      introJs().setOptions({
+        steps: [{
+          title: 'Welcome to RemixIDE',
+          intro: "Let us show you what we've got",
+          element: document.querySelector('#remixHomeRemi'),
+          tooltipClass: 'bg-light text-dark'
+        },
+        {
+          element: document.querySelector('#verticalIconsHomeIconr'),
+          intro: 'Click here to launch our Home tab with all neccessary links and tips.',
+          title: 'Home Tab',
+          tooltipClass: 'bg-light text-dark'
+        },
+        {
+          title: 'switch between plugins',
+          element: document.querySelector('#icon-panel'),
+          intro: 'Switch between active plugins. Right click to deactivate them.',
+          tooltipClass: 'bg-light text-dark'
+        },
+        {
+          title: 'Plugin Manager!',
+          element: document.querySelector('#verticalIconsKindpluginManager'),
+          intro: 'Control your plugins from Plugin Manager.',
+          tooltipClass: 'bg-light text-dark'
+        }
+        ]
+      }).start()
+      //localStorage.setItem('hadTour_initial', true)
+  //  }
   //}
 }
