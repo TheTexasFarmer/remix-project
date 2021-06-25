@@ -505,36 +505,30 @@ Please make a backup of your contracts and start using http://remix.ethereum.org
   framingService.start(params)
 
   if (params.embed) framingService.embed()
-  //if (!params) {
-  //  if (!localStorage.getItem('hadTour_initial')) {
+  if (!params) {
+    if (!localStorage.getItem('hadTour_initial')) {
       introJs().setOptions({
         steps: [{
           title: 'Welcome to RemixIDE',
-          intro: "Let us show you what we've got",
-          element: document.querySelector('#remixHomeRemi'),
+          intro: 'Click on an icon to launch our Home tab with all neccessary links and tips.',
+          element: document.querySelector('#verticalIconsHomeIcon'),
           tooltipClass: 'bg-light text-dark'
         },
         {
-          element: document.querySelector('#verticalIconsHomeIconr'),
-          intro: 'Click here to launch our Home tab with all neccessary links and tips.',
-          title: 'Home Tab',
+          element: document.querySelector('#verticalIconsKindsolidity'),
+          title: 'Solidity',
+          intro: 'Select a contract and switch to solidity plugin to compile',
           tooltipClass: 'bg-light text-dark'
         },
         {
-          title: 'switch between plugins',
-          element: document.querySelector('#icon-panel'),
-          intro: 'Switch between active plugins. Right click to deactivate them.',
-          tooltipClass: 'bg-light text-dark'
-        },
-        {
-          title: 'Plugin Manager!',
-          element: document.querySelector('#verticalIconsKindpluginManager'),
-          intro: 'Control your plugins from Plugin Manager.',
+          title: 'Deploy your contract',
+          element: document.querySelector('#verticalIconsKindudapp'),
+          intro: 'Here you go, almost done. Now switch to the plugin to Deploy your contract.',
           tooltipClass: 'bg-light text-dark'
         }
         ]
       }).start()
-      //localStorage.setItem('hadTour_initial', true)
-  //  }
-  //}
+      // localStorage.setItem('hadTour_initial', true)
+    }
+  }
 }
