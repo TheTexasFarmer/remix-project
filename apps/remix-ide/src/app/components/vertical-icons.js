@@ -69,7 +69,7 @@ export class VerticalIcons extends Plugin {
     title = title.replace(/^\w/, c => c.toUpperCase())
     this.icons[name] = yo`
       <div
-        class="${css.icon}"
+        class="${css.icon} m-2"
         onclick="${() => { this.toggle(name) }}"
         plugin="${name}"
         title="${title}"
@@ -251,7 +251,7 @@ export class VerticalIcons extends Plugin {
   render () {
     const home = yo`
       <div
-        class="${css.homeIcon}"
+        class="m-1 ${css.homeIcon}"
         onclick="${async () => {
           await this.appManager.activatePlugin('home')
           this.call('tabs', 'focus', 'home')
@@ -297,7 +297,6 @@ const css = csjs`
       width: 42px;
       height: 42px;
       margin-bottom: 20px;
-      margin-left: -5px;
       cursor: pointer;
   }
   .homeIcon svg path {
@@ -307,8 +306,6 @@ const css = csjs`
     fill: var(--primary);
   }
   .icons {
-    margin-left: 10px;
-    margin-top: 15px;
   }
   .icon {
     cursor: pointer;

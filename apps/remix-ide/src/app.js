@@ -502,33 +502,34 @@ Please make a backup of your contracts and start using http://remix.ethereum.org
 
   // Load and start the service who manager layout and frame
   const framingService = new FramingService(sidePanel, menuicons, mainview, this._components.resizeFeature)
-  framingService.start(params)
 
   if (params.embed) framingService.embed()
-  if (!params) {
-    if (!localStorage.getItem('hadTour_initial')) {
-      introJs().setOptions({
-        steps: [{
-          title: 'Welcome to RemixIDE',
-          intro: 'Click on an icon to launch our Home tab with all neccessary links and tips.',
-          element: document.querySelector('#verticalIconsHomeIcon'),
-          tooltipClass: 'bg-light text-dark'
-        },
-        {
-          element: document.querySelector('#verticalIconsKindsolidity'),
-          title: 'Solidity',
-          intro: 'Select a contract and switch to solidity plugin to compile',
-          tooltipClass: 'bg-light text-dark'
-        },
-        {
-          title: 'Deploy your contract',
-          element: document.querySelector('#verticalIconsKindudapp'),
-          intro: 'Here you go, almost done. Now switch to the plugin to Deploy your contract.',
-          tooltipClass: 'bg-light text-dark'
-        }
-        ]
-      }).start()
-      // localStorage.setItem('hadTour_initial', true)
-    }
+  framingService.start(params)
+
+  // if (!params) {
+  if (!localStorage.getItem('hadTour_initial')) {
+    introJs().setOptions({
+      steps: [{
+        title: 'Welcome to RemixIDE',
+        intro: 'Click on an icon to launch our Home tab with all neccessary links and tips.',
+        element: document.querySelector('#verticalIconsHomeIcon'),
+        tooltipClass: 'bg-light text-dark'
+      },
+      {
+        element: document.querySelector('#compileIcons'),
+        title: 'Solidity',
+        intro: 'Select a contract and switch to solidity plugin to compile',
+        tooltipClass: 'bg-light text-dark'
+      },
+      {
+        title: 'Deploy your contract',
+        element: document.querySelector('#runIcons'),
+        intro: 'Here you go, almost done. Now switch to the plugin to Deploy your contract.',
+        tooltipClass: 'bg-light text-dark'
+      }
+      ]
+    }).start()
+    localStorage.setItem('hadTour_initial', true)
   }
+  // }
 }
