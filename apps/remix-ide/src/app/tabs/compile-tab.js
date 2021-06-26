@@ -5,13 +5,13 @@ import { SolidityCompiler, CompileTab as CompileTabLogic } from '@remix-ui/solid
 import { ViewPlugin } from '@remixproject/engine-web'
 import { Renderer } from '@remix-ui/renderer'
 import * as packageJson from '../../../../../package.json'
-import publishToStorage from '../../publishToStorage'
+// import publishToStorage from '../../publishToStorage'
 import { compile } from '../compiler/compiler-helpers'
 
 const EventEmitter = require('events')
 const $ = require('jquery')
 const yo = require('yo-yo')
-const copy = require('copy-text-to-clipboard')
+const copy = require('copy-to-clipboard')
 var QueryParams = require('../../lib/query-params')
 const modalDialogCustom = require('../ui/modal-dialog-custom')
 const parseContracts = require('./compileTab/contractParser')
