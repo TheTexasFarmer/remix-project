@@ -61,7 +61,8 @@ class CompileTab extends ViewPlugin {
       this.editor,
       this.config,
       this.fileProvider,
-      this.contentImport
+      this.contentImport,
+      this.setCompileErrors.bind(this)
     )
     this.compiler = this.compileTabLogic.compiler
     this.compileTabLogic.init()
@@ -77,6 +78,11 @@ class CompileTab extends ViewPlugin {
     this.currentFile = ''
     this.contractsDetails = {}
     this.emit('statusChanged', { key: 'none' })
+    this.renderComponent()
+  }
+
+  setCompileErrors (data) {
+    this.compileErrors = data
     this.renderComponent()
   }
 
@@ -135,7 +141,7 @@ class CompileTab extends ViewPlugin {
     this.fileManager.events.on('noFileSelected', this.data.eventHandlers.onNoFileSelected)
 
     this.data.eventHandlers.onCompilationFinished = (success, data, source) => {
-      this.compileErrors = data
+      this.setCompileErrors(data)
       if (success) {
         // forwarding the event to the appManager infra
         this.emit('compilationFinished', source.target, source, 'soljson', data)
