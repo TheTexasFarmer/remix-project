@@ -251,7 +251,7 @@ export class VerticalIcons extends Plugin {
   render () {
     const home = yo`
       <div
-        class="m-1 ${css.homeIcon}"
+        class="m-1 mt-2 ${css.homeIcon}"
         onclick="${async () => {
           await this.appManager.activatePlugin('home')
           this.call('tabs', 'focus', 'home')

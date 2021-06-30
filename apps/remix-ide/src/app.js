@@ -7,6 +7,7 @@ import PanelsResize from './lib/panels-resize'
 import { RemixEngine } from './remixEngine'
 import { RemixAppManager } from './remixAppManager'
 import { FramingService } from './framingService'
+import { WalkthroughService } from './walkthroughService'
 import { MainView } from './app/panels/main-view'
 import { ThemeModule } from './app/tabs/theme-module'
 import { NetworkModule } from './app/tabs/network-module'
@@ -19,7 +20,6 @@ import { MainPanel } from './app/components/main-panel'
 import FetchAndCompile from './app/compiler/compiler-sourceVerifier-fetchAndCompile'
 
 import migrateFileSystem from './migrateFileSystem'
-const introJs = require('intro.js')
 
 const isElectron = require('is-electron')
 const csjs = require('csjs-inject')
@@ -506,30 +506,8 @@ Please make a backup of your contracts and start using http://remix.ethereum.org
   if (params.embed) framingService.embed()
   framingService.start(params)
 
-  // if (!params) {
-  if (!localStorage.getItem('hadTour_initial')) {
-    introJs().setOptions({
-      steps: [{
-        title: 'Welcome to RemixIDE',
-        intro: 'Click on an icon to launch our Home tab with all neccessary links and tips.',
-        element: document.querySelector('#verticalIconsHomeIcon'),
-        tooltipClass: 'bg-light text-dark'
-      },
-      {
-        element: document.querySelector('#compileIcons'),
-        title: 'Solidity',
-        intro: 'Select a contract and switch to solidity plugin to compile',
-        tooltipClass: 'bg-light text-dark'
-      },
-      {
-        title: 'Deploy your contract',
-        element: document.querySelector('#runIcons'),
-        intro: 'Here you go, almost done. Now switch to the plugin to Deploy your contract.',
-        tooltipClass: 'bg-light text-dark'
-      }
-      ]
-    }).start()
-    localStorage.setItem('hadTour_initial', true)
+  const walkthroughService = new WalkthroughService(localStorage)
+  if (!params.code) {
+      walkthroughService.start()
   }
-  // }
 }
