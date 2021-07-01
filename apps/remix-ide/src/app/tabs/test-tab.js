@@ -1,5 +1,5 @@
 import { ViewPlugin } from '@remixproject/engine-web'
-import { canUseWorker, urlFromVersion } from '../compiler/compiler-utils'
+import { canUseWorker, urlFromVersion } from '@remix-ui/solidity-compiler'
 import { removeMultipleSlashes, removeTrailingSlashes } from '../../lib/helper'
 
 var yo = require('yo-yo')
